@@ -6,10 +6,10 @@ option go_package = "./proto";  //all the file will be generated here.
 package greet_service;  // just like how we have package in every go file
 
 service GreetService{
-    rpc SayHello(NoParam) return (HelloResponse);    //define a rpc of name sayhello, which accepts a resposne, return a response
+    rpc SayHello(NoParam) returns (HelloResponse);    //define a rpc of name sayhello, which accepts a resposne, return a response
     rpc SayHelloServerStreaming(NamesList) returns (stream HelloResponse);
-    rpc SayHelloClientStreaming(stream HelloRequest) return (MessagesList);  
-    rpc SayHelloBidirectionalStreaming(stream HelloRequest) return (stream HelloResponse);
+    rpc SayHelloClientStreaming(stream HelloRequest) returns (MessagesList);  
+    rpc SayHelloBidirectionalStreaming(stream HelloRequest) returns (stream HelloResponse);
 
 
 }
@@ -19,7 +19,7 @@ message HelloResponse{
     string message= 1;
 }
 message HelloRequest{
-    strinf name= 1;
+    string name= 1;
 }
 message NamesList{
     repeated string names=1;   //kinda vector or list
